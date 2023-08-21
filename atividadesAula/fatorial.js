@@ -1,11 +1,11 @@
 //calcular fatorial de 6,5 e 4. Depois imprimir o resultado da multiplicação.
-function fatorial(numero) {
-    if (numero === 0) {
+function fatorial(numbero) {
+    if (numbero === 0) {
         return 1;
     }
     
     let resultado = 1;
-    for (let i = numero; i > 0; i--) {
+    for (let i = numbero; i > 0; i--) {
         resultado *= i;
     }
     
