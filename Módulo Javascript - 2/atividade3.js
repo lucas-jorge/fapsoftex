@@ -18,7 +18,7 @@ console.log(`O aluno foi ${resultado}`);
 const nota4 = Number(prompt("Digite a primeira nota: "));
 const nota5 = Number(prompt("Digite a segunda nota: "));
 
-let media2 = (nota4 + nota5 + nota3) / 3;
+let media2 = (nota4 + nota5) / 2;
 let notaMinima = 7 - media2;
 
 console.log(`A nota mínima que você precisa tirar é ${notaMinima}`);
