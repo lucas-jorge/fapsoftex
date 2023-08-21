@@ -1,15 +1,15 @@
 //brincando na aula
 
-const prompt = require('prompt-sync')({sigint: true});
+const characters = ['Lucas', 'Thiago', 'Mateus', 'Didio'];
+const classes = ['Guerreiro', 'Mago', 'Arqueiro', 'Ladino'];
+const weapons = ['Espada', 'Cajado', 'Arco', 'Adaga'];
 
-let personagem = [Lucas, Thiago, Mateus, Didio];
-let classe = [Guerreiro, Mago, Arqueiro, Ladino];
-let arma = [Espada, Cajado, Arco, Adaga];
+const randomCharacter = characters[Math.floor(Math.random() * characters.length)];
+const randomClass = classes[Math.floor(Math.random() * classes.length)];
+const randomWeapon = weapons[Math.floor(Math.random() * weapons.length)];
 
-const heroi1 = personagem[Math.floor(Math.random() * personagem.length)];
-const classe1 = classe[Math.floor(Math.random() * classe.length)];
-const arma1 = arma[Math.floor(Math.random() * arma.length)];
+console.log("Seu personagem é:", randomCharacter);
+console.log("Sua classe é:", randomClass);
+console.log("Sua arma é:", randomWeapon);
 
-console.log("Seu personagem é: " + heroi1);
-console.log("Sua classe é: " + classe1);
-console.log("Sua arma é: " + arma1);
+
