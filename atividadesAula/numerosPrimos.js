@@ -1,6 +1,6 @@
 //achar numeros primos de 1  A 50.
 
-function ePrimo(numero) {
+function primoSim(numero) {
     if (numero <= 1) {
         return false;
     }
@@ -15,7 +15,8 @@ function ePrimo(numero) {
 }
 
 for (let i = 1; i <= 50; i++) {
-    if (ePrimo(i)) {
+    if (primoSim(i)) {
         console.log(i);
     }
 }
+console.log('Curiosidade: 2 é o único número primo que é par!')
