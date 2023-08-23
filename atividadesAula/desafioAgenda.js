@@ -1,4 +1,4 @@
-//crie uma agenda que tenha tres campos e que permita inserir um numero, x de vezes pelo teclado
+//crie uma agenda que tenha tres campos e que permita inserir um numero x de vezes pelo teclado
 
 const prompt = require('prompt-sync')({sigint: true});
 
