@@ -3,22 +3,13 @@
 const prompt = require('prompt-sync')({sigint: true});
 
 let agenda = [];
-let nome = [];
-let telefone = [];
-let email = [];
-let i = 0;
-var x = 0;
 
-while (x < 3) {
-    nome[i] = prompt('Digite o nome: ');
-    telefone[i] = prompt('Digite o telefone: ');
-    email[i] = prompt('Digite o email: ');
-    i++;
-    x++;
+for (let i = 0; i < 3; i++) {
+    const nome = prompt('Digite o nome: ');
+    const telefone = prompt('Digite o telefone: ');
+    const email = prompt('Digite o email: ');
+
+    agenda.push([nome, telefone, email]);
 }
-
-for (i = 0; i < 2; i++) {
-    agenda[i] = [nome[i], telefone[i], email[i]];
-} 
 
 console.log(agenda);
