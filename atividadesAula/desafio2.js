@@ -2,26 +2,34 @@
 
 const prompt = require('prompt-sync')({sigint: true});
 
-let nome = [];
-let telefone = [];
-let email = [];
-let i = 0;
-let x = 0;
+// usando 1 for e switch
 
-while (x < 5) {
-    nome[i] = prompt('Digite o nome: ');
-    telefone[i] = prompt('Digite o telefone: ');
-    email[i] = prompt('Digite o email: ');
-    i++;
-    x++;
+let agenda = [];
+let quantidade = prompt('Quantas pessoas há na agenda? ');
+
+for (let i = 0; i < quantidade; i++) {
+    let pessoa = {
+        nome: prompt('Nome: '),
+        telefone: prompt('Telefone: '),
+        email: prompt('Email: ')
+    };
+    agenda.push(pessoa);
 }
 
-const agenda = [nome, telefone, email];
+let opcao = prompt('Deseja buscar por nome, telefone ou email? ');
 
-console.log(agenda);
-
-const coluna = prompt('Digite a coluna que deseja visualizar: ');
-
-for (i = 0; i < 5; i++) {
-    console.log(agenda[coluna][i]);
+for (let i = 0; i < agenda.length; i++) {
+    switch (opcao) {
+        case 'nome':
+            console.log(agenda[i].nome);
+            break;
+        case 'telefone':
+            console.log(agenda[i].telefone);
+            break;
+        case 'email':
+            console.log(agenda[i].email);
+            break;
+        default:
+            console.log('Opção inválida.');
+    }
 }
