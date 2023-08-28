@@ -3,14 +3,15 @@ const prompt = require("prompt-sync")({ sigint: true });
 
 let palavra = prompt("Digite uma palavra: ");
 
+//usar função com 2 for i e for j.
+
 function palindromo(palavra) {
-    if (palavra.length <= 1) {
-        return true;//é palíndromo.
+    for (let i = 0, j = palavra.length - 1; i < palavra.length / 2; i++, j--) {
+        if (palavra[i] !== palavra[j]) {
+            return false;
+        }
     }
-    if (palavra[0] !== palavra[palavra.length - 1]) {
-        return false;//não é palíndromo.
-    }
-    return palindromo(palavra.slice(1, palavra.length - 1));
+    return true;
 }
 
 console.log(palindromo(palavra));
