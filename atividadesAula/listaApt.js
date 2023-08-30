@@ -1,9 +1,44 @@
 //programinha básico para fazer uma lista pro apt novo.
 
-
 const prompt = require('prompt-sync')({ sigint: true });
 
-let lista = [];
+const lista = [];
+
+function adicionarItem() {
+  const comodo = prompt('Digite o cômodo: ').toLowerCase();
+  const categoria = prompt('Digite a categoria: ').toLowerCase();
+  const item = prompt('Digite o item: ').toLowerCase();
+
+  lista.push({
+    comodo,
+    categoria,
+    item
+  });
+
+  console.log('Item adicionado com sucesso!');
+}
+
+function removerItem() {
+  console.log('Qual item deseja remover?');
+  const itemRemover = prompt('Digite o item: ');
+  const index = lista.findIndex(item => item.item === itemRemover);
+
+  if (index !== -1) {
+    lista.splice(index, 1);
+    console.log('Item removido com sucesso!');
+  } else {
+    console.log('Item não encontrado!');
+  }
+}
+
+function exibirLista() {
+  if (lista.length === 0) {
+    console.log('Lista vazia!');
+  } else {
+    console.log('Lista de itens:');
+    lista.forEach(item => console.log(item));
+  }
+}
 
 while (true) {
   console.log('Menu de opções');
@@ -12,50 +47,21 @@ while (true) {
   console.log('3 - Exibir lista');
   console.log('4 - Sair');
 
-  let opcao = prompt('Digite uma opção: ');
+  const opcao = prompt('Digite uma opção: ');
 
-    switch (opcao) {
+  switch (opcao) {
     case '1':
-      let comodo = prompt('Digite o comodo: ').toLowerCase();
-      let categoria = prompt('Digite a categoria: ').toLowerCase();
-      let item = prompt('Digite o item: ').toLowerCase();
-
-      lista.push({
-        comodo: comodo,
-        categoria: categoria,
-        item: item
-      });
-      console.log('Item adicionado com sucesso!');
+      adicionarItem();
       break;
-
     case '2':
-      console.log('Qual item deseja remover?');
-      let itemRemover = prompt('Digite o item: ');
-      let index = lista.findIndex(item => item.item === itemRemover);
-      if (index !== -1) {
-        lista.splice(index, 1);
-        console.log('Item removido com sucesso!');
-      } else {
-        console.log('Item não encontrado!');
-      }
+      removerItem();
       break;
-
     case '3':
-     //se a lista estiver vazia, retornar mensagem.
-      if (lista.length === 0) {
-        console.log('Lista vazia!');
-      } else {
-        console.log('Lista de itens:');
-        for (let i = 0; i < lista.length; i++) {
-          console.log(lista[i]);
-        }
-      }
+      exibirLista();
       break;
-
     case '4':
       console.log('Saindo...');
       return;
-
     default:
       console.log('Opção inválida!');
       break;
