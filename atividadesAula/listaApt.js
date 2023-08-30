@@ -41,13 +41,14 @@ while (true) {
       break;
 
     case '3':
-      console.log('Lista de itens:');
-      for (let i = 0; i < lista.length; i++) {
-        console.log(lista[i]);
-       //se a lista estiver vazia retornar uma mensagem.
-       if (lista.length === 0) {
-         console.log('Lista vazia!');
-       }
+     //se a lista estiver vazia, retornar mensagem.
+      if (lista.length === 0) {
+        console.log('Lista vazia!');
+      } else {
+        console.log('Lista de itens:');
+        for (let i = 0; i < lista.length; i++) {
+          console.log(lista[i]);
+        }
       }
       break;
 
