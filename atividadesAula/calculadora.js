@@ -1,33 +1,70 @@
 const readlineSync = require('readline-sync');
 
-function calcular(valor1, valor2, operador) {
-  switch (operador) {
+function adicao(value1, value2) {
+  return value1 + value2;
+}
+
+function subtracao(value1, value2) {
+  return value1 - value2;
+}
+
+function multiplicacao(value1, value2) {
+  return value1 * value2;
+}
+
+function divisao(value1, value2) {
+  return value1 / value2;
+}
+
+function calcular(value1, value2, operator) {
+  switch (operator) {
     case "+":
-      return valor1 + valor2;
+      return adicao(value1, value2);
     case "-":
-      return valor1 - valor2;
+      return subtracao(value1, value2);
     case "*":
-      return valor1 * valor2;
+      return multiplicacao(value1, value2);
     case "/":
-      return valor1 / valor2;
+      return divisao(value1, value2);
     default:
       console.log('Operador inválido');
       return null;
   }
 }
 
-console.log('Bem vindo(a) ao CALCULATOR 2000');
-console.log('Menu de opções');
+console.log('Bem vindo ao CALCULATOR 2000');
+console.log('Menu de opções:');
 console.log('1 - Adição');
 console.log('2 - Subtração');
 console.log('3 - Multiplicação');
 console.log('4 - Divisão');
 
-const valor1 = parseFloat(readlineSync.question('Digite o primeiro valor: '));
-const valor2 = parseFloat(readlineSync.question('Digite o segundo valor: '));
-const operador = readlineSync.question('Digite o operador (+, -, *, /): ');
+const option = parseInt(readlineSync.question('Digite o número da operação desejada: '));
 
-const resultado = calcular(valor1, valor2, operador);
-if (resultado !== null) {
-  console.log('Resultado:', resultado);
+const value1 = parseFloat(readlineSync.question('Digite o primeiro valor: '));
+const value2 = parseFloat(readlineSync.question('Digite o segundo valor: '));
+
+let operator;
+switch (option) {
+  case 1:
+    operator = "+";
+    break;
+  case 2:
+    operator = "-";
+    break;
+  case 3:
+    operator = "*";
+    break;
+  case 4:
+    operator = "/";
+    break;
+  default:
+    console.log('Opção inválida');
+    return;
+}
+
+const result = calcular(value1, value2, operator);
+
+if (result !== null) {
+  console.log('Resultado:', result);
 }
