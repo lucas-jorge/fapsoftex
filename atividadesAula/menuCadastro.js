@@ -21,6 +21,7 @@ function removerTarefa() {
   if (index !== -1) {
     tarefas.splice(index, 1);
     console.log('Tarefa removida com sucesso!');
+  } else {
     console.log('Tarefa não encontrada!');
   }
 }
@@ -48,7 +49,9 @@ function exibirTarefas() {
   }
 }
 
-while (true) {
+let opcao = '';
+
+while (opcao !== '5') {
   console.log('Menu de opções');
   console.log('1 - Adicionar tarefa');
   console.log('2 - Remover tarefa');
@@ -56,23 +59,26 @@ while (true) {
   console.log('4 - Exibir tarefas');
   console.log('5 - Sair');
 
-  const opcao = prompt('Digite uma opção: ');
+  opcao = prompt('Digite uma opção: ');
 
-  switch (opcao) {
-    case '1':
-      adicionarTarefa();
-      break;
-    case '2':
-      removerTarefa();
-      break;
-    case '3':
-      atualizarTarefa();
-      break;
-    case '4':
-      exibirTarefas();
-      break;
-    case '5':
-      console.log('Saindo...');
-      break;
-  }
+switch(opcao){
+
+  case 1:
+    adicionarTarefa();
+    break;
+  case 2:
+    removerTarefa();
+    break;
+  case 3:
+    atualizarTarefa();
+    break;
+  case 4:
+    exibirTarefas();
+    break;
+  case 5:
+    console.log('Saindo...')
+    break;
+  default:
+    console.log('Opção inválida! Por favor, escolha uma opção válida.');
+}
 }
