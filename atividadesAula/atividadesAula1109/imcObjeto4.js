@@ -50,7 +50,7 @@ function adicionarCliente() {
         }
     }
 
-let opcao = '';
+let opcao = '';//variável para armazenar a opção do usuário
 
 while (opcao !== '4') {
     console.log('Menu de opções');
@@ -61,6 +61,7 @@ while (opcao !== '4') {
 
     opcao = readline.question('Digite a opção desejada: ');
 
+    //switch para executar a opção escolhida pelo usuário
     switch (opcao) {
         case '1':
             adicionarCliente();
