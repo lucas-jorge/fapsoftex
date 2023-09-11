@@ -1,11 +1,11 @@
 const readline = require('readline-sync');
 
 const meses = ['Jan', 'Fev', 'Mar', 'Abr'];
-meses.map(mes => mes.toUpperCase());
+meses.map(mes => mes.toUpperCase());//converte todos os meses para maiúsculo
 
-let status = 1;
+let status = 1;//variável para armazenar a opção do usuário
 
-//loop
+//loop para que o usuário possa escolher as opções do sistema
 while (status == 1) {
 
   console.log("-------Sistema de cadastro de registro--------");
@@ -16,6 +16,7 @@ while (status == 1) {
 
   let op = readline.question("Digite a opcao desejada: ");
 
+  //switch para executar a opção escolhida pelo usuário
   switch (op) {
     case '1':
       inserirMes();
@@ -48,7 +49,7 @@ function inserirMes() {
 //lista todos os registros do array.
 function listarMes() {
   console.log("-------Relatório de todos os registros--------");
-  for (let i = 0; i < meses.length; i++) {
+  for (let i = 0; i < meses.length; i++) {//percorre o array meses
     console.log(meses[i]);
   }
 }
@@ -65,7 +66,7 @@ function alterar() {
   listarMes();
   let mesAlterar = readline.question("Escolha o registro a ser alterado: ");
   let novoValor = readline.question("Informe o novo conteúdo: ").toUpperCase();
-  let registro = getIndexByText(mesAlterar);
+  let registro = getIndexByText(mesAlterar);//retorna o indice do registro no array
   //se o registro for encontrado, altera o valor.
   if (registro !== -1) {
     meses[registro] = novoValor;
