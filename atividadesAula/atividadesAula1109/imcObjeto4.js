@@ -11,10 +11,11 @@ idade, IMC e a classificação. Conforme abaixo:
 ○ IMC entre 35,0 e 39,9 Kg/m2: obesidade grau II;
 ○ IMC maior do que 40,0 Kg/m2: obesidade grau III.)*/
 
-const readline = require('readline-sync');
+const readline = require('readline-sync');//importa o módulo readline-sync
 
-const clientes = [];
+const clientes = [];//array de objetos
 
+//função para adicionar um novo cliente
 function adicionarCliente() {
     const cliente = {
         nome: readline.question('Digite o nome do cliente: '),
@@ -24,20 +25,22 @@ function adicionarCliente() {
         cpf: readline.question('Digite o CPF do cliente: ')
     };
 
-    clientes.push(cliente);
+    clientes.push(cliente);//adiciona o objeto cliente ao array clientes
 
     console.log('Cliente adicionado com sucesso!');
     }
 
+    //função para listar todos os clientes
     function listarClientes() {
-        if (clientes.length === 0) {
+        if (clientes.length === 0) {//verifica se o array clientes está vazio
             console.log('Nenhum cliente cadastrado!');
         } else {
             console.log('Lista de clientes:');
-            clientes.forEach(cliente => console.log(cliente));
+            clientes.forEach(cliente => console.log(cliente));//imprime todos os objetos do array clientes
         }
     }
 
+    //função para calcular o IMC
     function calcularIMC() {
         if (clientes.length === 0) {
             console.log('Nenhum cliente cadastrado!');
