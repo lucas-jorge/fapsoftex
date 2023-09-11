@@ -37,3 +37,43 @@ function adicionarCliente() {
             clientes.forEach(cliente => console.log(cliente));
         }
     }
+
+    function calcularIMC() {
+        if (clientes.length === 0) {
+            console.log('Nenhum cliente cadastrado!');
+        } else {
+            console.log('Lista de clientes:');
+            clientes.forEach(cliente => console.log(cliente));
+        }
+    }
+
+let opcao = '';
+
+while (opcao !== '4') {
+    console.log('Menu de opções');
+    console.log('1 - Adicionar cliente');
+    console.log('2 - Listar clientes');
+    console.log('3 - Calcular IMC');
+    console.log('4 - Sair');
+
+    opcao = readline.question('Digite a opção desejada: ');
+
+    switch (opcao) {
+        case '1':
+            adicionarCliente();
+            break;
+        case '2':
+            listarClientes();
+            break;
+        case '3':
+            calcularIMC();
+            break;
+        case '4':
+            console.log('Saindo do sistema...');
+            break;
+        default:
+            console.log('Opção inválida!');
+    }
+}
+
+console.log('Fim do programa!');
