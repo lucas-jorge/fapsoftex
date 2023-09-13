@@ -2,11 +2,11 @@
 dataNascimento, sexo, cpf, idade. Realizar as operações para inserir
 (cadastrar) um novo cliente e em seguida listar (relatório) os mesmos.*/
 
-const readline = require('readline-sync');
+const readline = require('readline-sync');//importa a biblioteca readline-sync
 
-const clientes = [];
+const clientes = [];//cria um array vazio
 
-function adicionarCliente() {
+function adicionarCliente() {//cria uma função para adicionar um cliente
     const cliente = {
         nome: readline.question('Digite o nome do cliente: '),
         sobrenome: readline.question('Digite o sobrenome do cliente: '),
@@ -16,23 +16,23 @@ function adicionarCliente() {
         idade: readline.question('Digite a idade do cliente: ')
     };
 
-    clientes.push(cliente);
+    clientes.push(cliente);//adiciona o cliente no array clientes
 
     console.log('Cliente adicionado com sucesso!');
     }
 
-function listarClientes() {
-    if (clientes.length === 0) {
+function listarClientes() {//cria uma função para listar os clientes
+    if (clientes.length === 0) {//verifica se o array clientes está vazio
         console.log('Nenhum cliente cadastrado!');
     } else {
         console.log('Lista de clientes:');
-        clientes.forEach(cliente => console.log(cliente));
+        clientes.forEach(cliente => console.log(cliente));//arrow function para percorrer o array clientes e imprimir os clientes
     }
 }
 
-let opcao = '';
+let opcao = '';//cria uma variável vazia para armazenar a opção do usuário
 
-while (opcao !== '3') {
+while (opcao !== '3') {//enquanto a opção for diferente de 3, o programa continua executando
     console.log('Menu de opções');
     console.log('1 - Adicionar cliente');
     console.log('2 - Listar clientes');
@@ -40,7 +40,7 @@ while (opcao !== '3') {
 
     opcao = readline.question('Digite a opção desejada: ');
 
-    switch (opcao) {
+    switch (opcao) {//cria um switch para verificar a opção do usuário
         case '1':
             adicionarCliente();
             break;

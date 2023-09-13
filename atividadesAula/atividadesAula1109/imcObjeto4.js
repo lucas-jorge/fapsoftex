@@ -42,17 +42,17 @@ function adicionarCliente() {
 
     //função para calcular o IMC
     function calcularIMC() {
-        if (clientes.length === 0) {
+        if (clientes.length === 0) {//verifica se o array clientes está vazio
             console.log('Nenhum cliente cadastrado!');
         } else {
             console.log('Lista de clientes:');
-            clientes.forEach(cliente => console.log(cliente));
+            clientes.forEach(cliente => console.log(cliente));//arrow function para percorrer o array clientes e imprimir os clientes
         }
     }
 
 let opcao = '';//variável para armazenar a opção do usuário
 
-while (opcao !== '4') {
+while (opcao !== '4') {//enquanto a opção for diferente de 4, o programa continua executando
     console.log('Menu de opções');
     console.log('1 - Adicionar cliente');
     console.log('2 - Listar clientes');
