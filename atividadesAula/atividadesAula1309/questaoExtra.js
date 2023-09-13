@@ -15,18 +15,18 @@ class Carro {
       this.modelo = modelo;
       this.ano = ano;
       this.velocidade = 0;
-      Carro.totalCarros++;
+      Carro.totalCarros++;//Incrementa a propriedade estática totalCarros
     }
   
-    acelerar(velocidade) {
-      this.velocidade += velocidade;
+    acelerar(velocidade) {//método acelerar
+      this.velocidade += velocidade || 10;
     }
   
-    desacelerar(velocidade) {
-      this.velocidade -= velocidade;
+    desacelerar(velocidade) {//método desacelerar
+      this.velocidade -= velocidade || 10;
     }
   
-    exibirInformacoes() {
+    exibirInformacoes() {//método exibirInformacoes
       console.log(`Marca: ${this.marca}`);
       console.log(`Modelo: ${this.modelo}`);
       console.log(`Ano: ${this.ano}`);
@@ -39,13 +39,13 @@ disso, ela tem uma propriedade chamada turbo que armazena true ou false. O
 método acelerar da classe CarroEsportivo deve aumentar a velocidade em 20
 unidades se o turbo for true. */
 
-class CarroEsportivo extends Carro {
+class CarroEsportivo extends Carro {//classe CarroEsportivo que herda da classe Carro
     constructor(marca, modelo, ano, velocidade, turbo) {
         super(marca, modelo, ano, velocidade);
         this.turbo = turbo;
     }
 
-    acelerar() {
+    acelerar() {//método acelerar da classe CarroEsportivo
         if (this.turbo) {
             this.velocidade += 20;
         } else {
@@ -57,42 +57,30 @@ class CarroEsportivo extends Carro {
 /* c) Implemente um método estático chamado totalCarros na classe Carro para
 rastrear o número total de carros criados.*/
 
-// Inicializa a propriedade estática totalCarros
-Carro.totalCarros = 0;
+Carro.totalCarros = 0;//Inicializa a propriedade estática totalCarros
 
 
 /*d) Crie uma instância de um carro comum e uma instância de um carro esportivo.
 Use os métodos para acelerar e desacelerar os carros e exiba suas informações,
 incluindo a marca, modelo, ano e velocidade. */
-  
-  // Criar uma instância de um carro comum (Ford Ka)
-  const carroComum = new Carro("Ford", "Ka", 2016);
-  
-  // Acelerar o carro comum para 60 km/h
-  carroComum.acelerar(60);
-  
-  // Exibir informações do carro comum
-  console.log("Informações do Carro Comum:");
-  carroComum.exibirInformacoes();
-  
-  // Criar uma instância de um carro esportivo (Porsche 911)
-  const carroEsportivo = new Carro("Porsche", "911", 2023);
-  
-  // Acelerar o carro esportivo para 180 km/h
-  carroEsportivo.acelerar(180);
-  
-  // Exibir informações do carro esportivo
-  console.log("Informações do Carro Esportivo:");
-  carroEsportivo.exibirInformacoes();
-  
-  // Desacelerar o carro esportivo para 120 km/h
-  carroEsportivo.desacelerar(60);
-  
-  // Exibir informações atualizadas do carro esportivo
-  console.log("Informações do Carro Esportivo (após desacelerar):");
-  carroEsportivo.exibirInformacoes();  
 
-/* e) Verifique quantos carros foram criados no total usando o método estático
-totalCarros da classe Carro. */
+  const carroComum = new Carro("Ford", "Ka", 2016);//Criar uma instância de um carro comum (Ford Ka)
+  
+  carroComum.acelerar(60);//Acelerar o carro comum para 60 km/h
+  
+  console.log("Informações do Carro Comum:");
+  carroComum.exibirInformacoes();//Exibir informações do carro comum
+  
+  const carroEsportivo = new Carro("Porsche", "911", 2023);//Criar uma instância de um carro esportivo (Porsche 911)
+  
+  carroEsportivo.acelerar(180);//Acelerar o carro esportivo para 180 km/h
+  
+  console.log("Informações do Carro Esportivo:");
+  carroEsportivo.exibirInformacoes();//Exibir informações do carro esportivo
+  
+  carroEsportivo.desacelerar(60);//Desacelerar o carro esportivo em 60 km/h
+  
+  console.log("Informações do Carro Esportivo (após desacelerar):");
+  carroEsportivo.exibirInformacoes();//Exibir informações do carro esportivo após desacelerar
 
 console.log(Carro.totalCarros);//imprime o total de carros criados r = 2
