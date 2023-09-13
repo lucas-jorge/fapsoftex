@@ -127,11 +127,38 @@ class ClientePessoaJuridica extends Cliente {
 /* Propriedade Estática: Adicione uma propriedade estática chamada
 totalClientes na classe Cliente para saber o número total de clientes criados. */
 
+// Inicializa a propriedade estática totalClientes
+
+Cliente.totalClientes = 0;
+
 /* Instanciando Objetos: Como você cria uma instância de um
 ClientePessoaFisica e ClientePessoaJuridica, a partir da classe Cliente? */
+
+const cliente1 = new ClientePessoaFisica('Lucas', 'Jorge', '29/05/1986', 'H', '12345678901', 35);
+const cliente2 = new ClientePessoaJuridica('Bruna', 'Jorge', '29/05/1986', 'M', '12345678901', 33);
 
 /* Chamada de Métodos: Cria dois objetos para cada classe, no caso
 ClientePessoaFisica e ClientePessoaJuridica? */
 
+//imprime as propriedades do cliente1
+console.log(cliente1.nome);
+console.log(cliente1.sobrenome);
+console.log(cliente1.dataNascimento);
+console.log(cliente1.sexo);
+console.log(cliente1.cpf);
+console.log(cliente1.idade);
+console.log(cliente1.statusCliente());
+
+//imprime as propriedades do cliente2
+console.log(cliente2.nome);
+console.log(cliente2.sobrenome);
+console.log(cliente2.dataNascimento);
+console.log(cliente2.sexo);
+console.log(cliente2.cpf);
+console.log(cliente2.idade);
+console.log(cliente2.statusCliente());
+
 /* Contagem de Carros: Como você acessa a propriedade estática totalClientes
 para saber quantos clientes foram criados no total? */
+
+console.log(Cliente.totalClientes);
