@@ -1,27 +1,21 @@
 var Cliente = /** @class */ (function () {
-    function Cliente(cpf, nome, telefone, endereco) {
-        this.cpf = cpf;
-        this.nome = nome;
-        this.telefone = telefone;
-        this.endereco = endereco;
+    function Cliente(
+    //aqui colocar atributos da classe
+    ) {
     }
     return Cliente;
 }());
 var Produto = /** @class */ (function () {
-    function Produto(nome, categoria, preco, quantidadeEstoque) {
-        this.nome = nome;
-        this.categoria = categoria;
-        this.preco = preco;
-        this.quantidadeEstoque = quantidadeEstoque;
+    function Produto(
+    //aqui colocar atributos da classe
+    ) {
     }
     return Produto;
 }());
 var Compra = /** @class */ (function () {
-    function Compra(cliente, dataCompra, valorTotal, produtosComprados) {
-        this.cliente = cliente;
-        this.dataCompra = dataCompra;
-        this.valorTotal = valorTotal;
-        this.produtosComprados = produtosComprados;
+    function Compra(
+    //aqui colocar atributos da classe
+    ) {
     }
     return Compra;
 }());
@@ -77,4 +71,4 @@ var dataCompra = new Date();
 floricultura.realizarCompra(cliente1, dataCompra, [produto1]);
 var compras = floricultura.listarCompras();
 console.log(compras);
-//# sourceMappingURL=floriculturaUpdate1.js.map
+//# sourceMappingURL=floricultura.js.map

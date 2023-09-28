@@ -66,21 +66,19 @@ class Floricultura {
     }
 }
 
-
-//testes
+// testes
 // Nova floricultura
 const floricultura = new Floricultura();
 
 const cliente1 = new Cliente("123456789", "João", "9999-9999", "Rua A, 123");
 floricultura.cadastrarCliente(cliente1);
 
-//Cadastro de produtos
+// Cadastro de produtos
 const produto1 = new Produto("Astromélia", "flor", 15.0, 20);
 floricultura.cadastrarProduto(produto1);
 
 const produto2 = new Produto("Amarílis", "flor", 5.0, 25);
 floricultura.cadastrarProduto(produto2);
-
 
 const dataCompra = new Date();
 floricultura.realizarCompra(cliente1, dataCompra, [produto1]);
