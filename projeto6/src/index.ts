@@ -10,6 +10,7 @@ descrição, local, data de abertura, data de fechamento, status (aberto, em
 execução, fechado).*/
 
 import express from 'express';
+
 // Definindo a interface para um chamado
 interface Chamado {
   funcionario: string;

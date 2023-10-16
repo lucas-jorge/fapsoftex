@@ -1,17 +1,22 @@
 import FuncionarioService from '../service/FuncionarioService';
-import {Request, Response} from 'express';
+import { Request, Response } from 'express';
 
 class FuncionarioController {
+    private funcionarioService: FuncionarioService;
 
-    public buscarFuncionarios(req: Request, res: Response) {
-        const funcionarios = new FuncionarioService().listaFuncionarios();
-        return res.json(funcionarios);
-}
+    constructor() {
+        this.funcionarioService = new FuncionarioService();
+    }
 
-    public criarFuncionario(req: Request, res: Response) {
-        const {nome} = req.body;
-        const funcionario = new FuncionarioService().criarFuncionario(nome);
-        return res.json(funcionario);
+    public buscarFuncionarios(req: Request, res: Response): void {
+        const funcionarios = this.funcionarioService.listaFuncionarios();
+        res.json(funcionarios);
+    }
+
+    public criarFuncionario(req: Request, res: Response): void {
+        const { nome } = req.body;
+        const funcionario = this.funcionarioService.criarFuncionario(nome);
+        res.json(funcionario);
     }
 }
 
