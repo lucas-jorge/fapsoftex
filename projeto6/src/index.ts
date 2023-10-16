@@ -9,6 +9,7 @@ registrar o nome do funcionário, cargo. O chamado deve possuir
 descrição, local, data de abertura, data de fechamento, status (aberto, em
 execução, fechado).*/
 
+import express from 'express';
 // Definindo a interface para um chamado
 interface Chamado {
   funcionario: string;
@@ -67,7 +68,7 @@ class SistemaDeChamados {
 // Exemplo de uso do sistema de registro de chamados
 const sistemaChamados = new SistemaDeChamados();
 
-const chamado1: Chamado = {
+const chamado1: Chamado = {// Criando um novo chamado
   funcionario: "Lucas Jorge",
   matricula: 123456,
   cargo: "eletricista",
@@ -77,8 +78,8 @@ const chamado1: Chamado = {
   status: "Aberto",
 };
 
-sistemaChamados.abrirChamado(chamado1);
-sistemaChamados.imprimirChamados();
+sistemaChamados.abrirChamado(chamado1);// Abrindo o chamado
+sistemaChamados.imprimirChamados();// Imprimindo os chamados
 
-sistemaChamados.fecharChamado(0);
-sistemaChamados.imprimirChamados();
+sistemaChamados.fecharChamado(0);// Fechando o chamado
+sistemaChamados.imprimirChamados();// Imprimindo os chamados
