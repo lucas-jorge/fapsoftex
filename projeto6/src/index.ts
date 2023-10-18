@@ -11,7 +11,6 @@ execução, fechado).*/
 
 import express from 'express';
 import FuncionarioController from './controller/FuncionarioController';
-import ChamadoController from './controller/ChamadoController';
 
 // Definindo a interface para um chamado
 interface Chamado {
