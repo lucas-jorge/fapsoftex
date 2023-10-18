@@ -17,3 +17,8 @@ VALUES ('Lucas Jorge', 123456, 'eletricista', 'Ventilador de teto quebrado no ap
 -- selecionando os dados
 
 SELECT * FROM Chamado;
+
+--fazer uma consulta que traga o nome do funcionario e a descrição
+
+SELECT funcionario, descricao 
+FROM Chamado;
