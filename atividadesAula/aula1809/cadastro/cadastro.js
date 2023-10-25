@@ -21,16 +21,25 @@ class Cliente {
 }
 //definir a funçao cadastrar onlick do botao
 function cadastrar() {
-    //pegar os valores dos inputs
+    // pegar os valores dos inputs
     let nome = document.getElementById("nome").value;
     let sobrenome = document.getElementById("sobrenome").value;
     let dataNascimento = document.getElementById("dataNascimento").value;
     let sexo = document.getElementById("sexo").value;
-    //criar um objeto cliente
+
+    // verificar se algum campo está vazio
+    if (nome === "" || sobrenome === "") {
+        alert("Por favor, preencha todos os campos obrigatórios.");
+        return; // interrompe a execução da função caso haja campos vazios
+    }
+
+    // criar um objeto cliente
     let cliente = new Cliente(nome, sobrenome, dataNascimento, sexo);
-    //chamar a funcao handleRegistration
+    
+    // chamar a função handleRegistration
     handleRegistration(cliente);
 }
+
 
 function handleRegistration(cliente) {//funcao que recebe um objeto cliente
     try {
