@@ -1,3 +1,4 @@
+-- Active: 1697656846758@@127.0.0.1@3306@hotel
 CREATE TABLE `chamado` (
   `idchamado` int NOT NULL AUTO_INCREMENT,
   `nome` varchar(45) NOT NULL,
