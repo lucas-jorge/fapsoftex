@@ -22,3 +22,8 @@ CREATE TABLE `funcionario` (
   `cargo` varchar(45) NOT NULL,
   PRIMARY KEY (`idFuncionario`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+
+insert into hotel.chamado
+(descricao, data_abertura, data_fechamento, status, fk)
+values ( 'Apt 204 Torneira com vazamento', '2023-10-29', '1900-01-01',
+'Aberto', 1);

@@ -96,71 +96,163 @@ Tabela de Serviço
 O servico é identificado pela descrição, local, data de abertura, data de
 fechamento, status (aberto, em execução, fechado). */
 
-app.post("/servico", (req, res) => {
-    const dados = req.body;
-    const sql = "INSERT INTO hotel.servico SET ?";
-    conexao.query(sql, dados, (erro, resultado) => {
-        if (erro) {
-            console.log(erro);
-            res.status(400).json({ erro: erro });
-        } else {
-            res.status(201).json(resultado);
-        }
-    });
-});
+//Recuperando os dados da tabela chamado
 
-//Inserindo os dados
-
-app.get("/servico", (req, res) => {
-    const consulta =
-        "SELECT servico.descricao, servico.local, servico.dataAbertura, servico.dataFechamento, servico.status FROM hotel.servico";
-
+app.get("/chamados", (req, res) => {
+    const consulta = "SELECT idchamado, descricao, data_abertura, data_fechamento, status FROM hotel.chamado";
+    
     conexao.query(consulta, (erro, resultado) => {
         if (erro) {
             console.log(erro);
-            res.status(400).json({ erro: erro });
+            res.status(500).json({ erro: "Erro interno no servidor" });
         } else {
             res.status(200).json(resultado);
         }
     });
 });
 
-app.get("/servico/:id", (req, res) => {
-    const id = Number(req.params.id);
-    const sql = "SELECT * FROM hotel.servico WHERE idServico = ?;";
-    conexao.query(sql, id, (erro, resultado) => {
-        if (erro) {
-            console.log(erro);
-            res.status(400).json({ erro: erro });
-        } else {
-            res.status(201).json(resultado);
-        }
-    });
-});
-
-app.put("/servico/:id", (req, res) => {
-    const id = Number(req.params.id);
+app.post('/cadastrarchamados', (req, res) => {
     const dados = req.body;
-    const sql = "UPDATE servico SET ? WHERE idServico =?";
-    conexao.query(sql, [dados, id], (erro, resultado) => {
-        if (erro) {
-            console.log(erro);
-            res.status(400).json({ erro: erro });
-        } else {
-            res.status(201).json(resultado);
-        }
+  
+    const sql = "INSERT INTO hotel.chamado SET ?";
+    conexao.query(sql, dados, (erro, resultado) => {
+      if (erro) {
+        console.error(erro);
+        return res.status(400).json({ 'erro': erro });
+      }
+  
+      return res.status(201).json(resultado);
     });
-});
+  });
+  
+  //seleção chamado por id
+  
+    app.get('/chamados/:id', (req, res) => {
+        const id = Number(req.params.id);
+    
+        const sql = "SELECT * FROM hotel.chamado WHERE idchamado = ?;";
+        conexao.query(sql, id, (erro, resultado) => {
+        if (erro) {
+            console.error(erro);
+            return res.status(404).json({ 'erro': erro });
+        }
+    
+        return res.status(200).json(resultado);
+        });
+    });
 
-app.delete("/servico/:id", (req, res) => {
-    const id = Number(req.params.id);
-    const sql = "DELETE FROM hotel.servico WHERE idServico =?;";
-    conexao.query(sql, id, (erro, resultado) => {
+    //recuperando os dados da tabela funcionario e chamado
+
+    app.get('/funcionariochamado', (req, res) => {
+
+        const consulta = "SELECT funcionario.nome, chamado.descricao FROM hotel.funcionario INNER JOIN hotel.chamado ON funcionario.idFuncionario = chamado.idchamado;";
+
+        conexao.query(consulta, (erro, resultado) => {
+            if (erro) {
+                console.log(erro);
+                res.status(404).json({ erro: "Erro interno no servidor" });
+            } else {
+                res.status(200).json(resultado);
+            }
+        }
+        )
+    }
+    );
+
+    /* O Gerente precisa de um relatório que exiba o nome do funcionário e a
+descrição do chamado, a consulta deve ser ordenada pelo nome do funcionário
+(Pesquisar ORDER BY). */
+
+app.get('/funcionariochamado', (req, res) => {
+
+    const consulta = "SELECT funcionario.nome, chamado.descricao FROM hotel.funcionario INNER JOIN hotel.chamado ON funcionario.idFuncionario = chamado.idchamado ORDER BY funcionario.nome;";
+
+    conexao.query(consulta, (erro, resultado) => {
         if (erro) {
             console.log(erro);
-            res.status(400).json({ erro: erro });
+            res.status(404).json({ erro: "Erro interno no servidor" });
         } else {
-            res.status(201).json(resultado);
+            res.status(200).json(resultado);
         }
-    });
-});
+    }
+    )
+}
+);
+
+/* O Gerente precisa de um relatório que exiba todos os chamados que foram
+abertos no período entre o dia 01/09/2023 e 30/09/2023 (Pesquisar BETWEEN). */
+
+app.get('/chamados', (req, res) => {
+
+    const consulta = "SELECT * FROM hotel.chamado WHERE data_abertura BETWEEN '2023-09-01' AND '2023-09-30';";
+
+    conexao.query(consulta, (erro, resultado) => {
+        if (erro) {
+            console.log(erro);
+            res.status(404).json({ erro: "Erro interno no servidor" });
+        } else {
+            res.status(200).json(resultado);
+        }
+    }
+    )
+}
+);
+
+/* O Gerente precisa de um relatório que exiba o nome dos funcionário dos que
+começam com a letra P, a consulta deve ser ordenada pelo nome do funcionário
+(Pesquisar LIKE). */
+
+app.get('/funcionario', (req, res) => {
+
+    const consulta = "SELECT * FROM hotel.funcionario WHERE nome LIKE 'Pedro';";
+
+    conexao.query(consulta, (erro, resultado) => {
+        if (erro) {
+            console.log(erro);
+            res.status(404).json({ erro: "Erro interno no servidor" });
+        } else {
+            res.status(200).json(resultado);
+        }
+    }
+    )
+}
+);
+
+/* O Gerente precisa de um relatório que exiba o total de chamados (Pesquisar
+    COUNT). */
+
+app.get('/chamados', (req, res) => {
+    
+        const consulta = "SELECT COUNT(*) FROM hotel.chamado;";
+    
+        conexao.query(consulta, (erro, resultado) => {
+            if (erro) {
+                console.log(erro);
+                res.status(404).json({ erro: "Erro interno no servidor" });
+            } else {
+                res.status(200).json(resultado);
+            }
+        }
+        )
+    }
+    );
+
+/*     O Gerente precisa de um relatório que exiba o nome do funcionário e o de
+chamados por funcionário, a consulta deve ser ordenada pelo nome do
+funcionário (Pesquisar COUNT e GROUP BY). */
+
+app.get('/funcionariochamado', (req, res) => {
+
+    const consulta = "SELECT funcionario.nome, COUNT(chamado.descricao) FROM hotel.funcionario INNER JOIN hotel.chamado ON funcionario.idFuncionario = chamado.idchamado GROUP BY funcionario.nome;";
+
+    conexao.query(consulta, (erro, resultado) => {
+        if (erro) {
+            console.log(erro);
+            res.status(404).json({ erro: "Erro interno no servidor" });
+        } else {
+            res.status(200).json(resultado);
+        }
+    }
+    )
+}
+);
