@@ -76,7 +76,7 @@ app.get("/funcionario/:id", (req, res) => {
             console.log(erro);
             res.status(400).json({ erro: erro });
         } else {
-            res.status(201).json(resultado);
+            res.status(200).json(resultado);
         }
     });
 });
