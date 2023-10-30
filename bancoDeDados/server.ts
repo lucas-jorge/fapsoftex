@@ -1,7 +1,10 @@
 import express, { json } from "express";
 import mysql from "mysql2";
+import bodyParser from "body-parser";
 
 const app = express();
+
+app.use(bodyParser.json());
 
 const conexao = mysql.createConnection({
     host: "localhost",
@@ -11,13 +14,28 @@ const conexao = mysql.createConnection({
     database: "hotel",
 });
 
+conexao.connect((err) => {
+    if (err) {
+        console.error("Failed to connect to MySQL:", err);
+        return;
+    }
+    console.log("Connected to MySQL!");
+});
+
+
 app.use(json());
 
 app.get("/", (req, res) => {
     res.send("hello world!");
 });
 
-app.listen(3000, () => {
+process.on('SIGINT', () => {
+    conexao.end();
+    process.exit();
+});
+
+
+app.listen(80, () => {
     console.log("listening on port 3000");
 });
 
@@ -118,16 +136,17 @@ app.post('/cadastrarchamados', (req, res) => {
     conexao.query(sql, dados, (erro, resultado) => {
       if (erro) {
         console.error(erro);
-        return res.status(400).json({ 'erro': erro });
+        return res.status(404).json({ 'erro': erro });
       }
   
-      return res.status(201).json(resultado);
+      return res.status(200).json(resultado);
     });
   });
   
   //seleção chamado por id
   
     app.get('/chamados/:id', (req, res) => {
+
         const id = Number(req.params.id);
     
         const sql = "SELECT * FROM hotel.chamado WHERE idchamado = ?;";
@@ -145,7 +164,8 @@ app.post('/cadastrarchamados', (req, res) => {
 
     app.get('/funcionariochamado', (req, res) => {
 
-        const consulta = "SELECT funcionario.nome, chamado.descricao FROM hotel.funcionario INNER JOIN hotel.chamado ON funcionario.idFuncionario = chamado.idchamado;";
+        const consulta = "SELECT funcionario.nome, chamado.descricao FROM hotel.funcionario INNER JOIN hotel.chamado ON funcionario.idFuncionario = chamado.idFuncionario;";
+
 
         conexao.query(consulta, (erro, resultado) => {
             if (erro) {
@@ -204,7 +224,7 @@ começam com a letra P, a consulta deve ser ordenada pelo nome do funcionário
 
 app.get('/funcionario', (req, res) => {
 
-    const consulta = "SELECT * FROM hotel.funcionario WHERE nome LIKE 'Pedro';";
+    const consulta = "SELECT * FROM hotel.funcionario WHERE nome LIKE 'Pedro%';";
 
     conexao.query(consulta, (erro, resultado) => {
         if (erro) {
@@ -222,8 +242,10 @@ app.get('/funcionario', (req, res) => {
     COUNT). */
 
 app.get('/chamados', (req, res) => {
+
     
-        const consulta = "SELECT COUNT(*) FROM hotel.chamado;";
+    const consulta = "SELECT COUNT(*) AS total_chamados FROM hotel.chamado;";
+
     
         conexao.query(consulta, (erro, resultado) => {
             if (erro) {
@@ -243,7 +265,7 @@ funcionário (Pesquisar COUNT e GROUP BY). */
 
 app.get('/funcionariochamado', (req, res) => {
 
-    const consulta = "SELECT funcionario.nome, COUNT(chamado.descricao) FROM hotel.funcionario INNER JOIN hotel.chamado ON funcionario.idFuncionario = chamado.idchamado GROUP BY funcionario.nome;";
+    const consulta = "SELECT funcionario.nome, COUNT(chamado.descricao) AS total_chamados FROM hotel.funcionario INNER JOIN hotel.chamado ON funcionario.idFuncionario = chamado.idFuncionario GROUP BY funcionario.nome;";
 
     conexao.query(consulta, (erro, resultado) => {
         if (erro) {
