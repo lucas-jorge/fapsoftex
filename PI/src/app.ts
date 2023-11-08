@@ -3,7 +3,6 @@ import { Dispositivo } from './models/dispositivo';
 import { DispositivoService } from './service/dispositivoService';
 import { DispositivoController } from './controller/dispositivoController';
 
-/* const view = new DispositivoView(); */
 const app = express();
 const controller = new DispositivoController(new DispositivoService());
 
