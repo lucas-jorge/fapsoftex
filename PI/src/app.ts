@@ -12,4 +12,7 @@ controller.ligarDispositivo(dispositivo);
 const dispositivo2 = new Dispositivo(2, 'Lâmpada do Quarto', false);
 controller.desligarDispositivo(dispositivo2);
 
+const dispositivo3 = new Dispositivo(3, 'Fechadura da entrada', false);
+controller.ligarDispositivo(dispositivo3);
+
 export default app;
