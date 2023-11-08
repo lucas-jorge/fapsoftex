@@ -1,10 +1,13 @@
 import express from 'express';
-import { Dispositivo } from './models/Dispositivo';
-/* import { DispositivoView } from './view/DispositivoView'; */
-import { DispositivoController } from './controller/DispositivoController';
+import { Dispositivo } from './models/dispositivo';
+import { DispositivoService } from './service/dispositivoService';
+import { DispositivoController } from './controller/dispositivoController';
 
 /* const view = new DispositivoView(); */
-const controller = new DispositivoController(view);
+const app = express();
+const controller = new DispositivoController(new DispositivoService());
 
 const dispositivo = new Dispositivo(1, 'Lâmpada da Sala', false);
 controller.ligarDispositivo(dispositivo);
+
+export default app;

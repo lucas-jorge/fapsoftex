@@ -1,5 +1,5 @@
-import { Dispositivo } from "../model/Dispositivo";
-import { DispositivoService } from "../service/DispositivoService";
+import { Dispositivo } from "../models/dispositivo";
+import { DispositivoService } from "../service/dispositivoService";
 
 class DispositivoController {
     constructor(private view: DispositivoService) {}
@@ -14,3 +14,5 @@ class DispositivoController {
         this.view.renderizar(dispositivo);
     }
 }
+
+export { DispositivoController };
