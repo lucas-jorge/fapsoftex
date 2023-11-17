@@ -25,3 +25,21 @@ INSERT INTO Produtos (NomeProduto, Preco, QuantidadeEstoque)
  UPDATE Produtos
  SET QuantidadeEstoque = 25, Preco = 849.99
  WHERE NomeProduto = "Smartphone";
+
+-- 3. venda de produtos (DELETE): simule a venda de cinco unidades do "Tablet" e dez unidades do "Fone de Ouvido." Atualize o estoque
+-- na tabela "Produtos" de acordo com as vendas.
+
+-- Resolução:
+DELETE FROM Produtos
+ WHERE NomeProduto = "Tablet"
+ LIMIT 5;
+--
+DELETE FROM Produtos
+ WHERE NomeProduto = "Fone de Ouvido"
+ LIMIT 10;
+ UPDATE Produtos
+
+-- 4. consulta de produtos (SELECT): selecione todos os produtos da tabela "Produtos" e exiba-os no console. */
+
+-- Resolução:
+SELECT * FROM Produtos;
