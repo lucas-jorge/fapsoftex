@@ -12,4 +12,4 @@ res.status(500). json({ error: 'Erro ao cadastrar cliente.' });
 }
 );
 
-//export default router;
+export default router;
